@@ -1,6 +1,6 @@
 pragma solidity ^0.4.16; //solidityのバージョン指定
 
-import './SafeMath.sol';　//SafeMathのインポート
+import "./SafeMath.sol";
 
 contract MTC {
     
@@ -8,12 +8,12 @@ contract MTC {
      
     //ネットワーク上にリリースするトークン名とティッカー
      string public constant symbol = "MTC";
-     string public constant name = "Metho Coin"
+     string public constant name = "Metho Coin";
      
      //総供給量と対ethレートの定義
      uint256 _totalSupply = 100000;
      uint256 _currentSupply = 0;
-     uint256 public constant RATE = 1000;　//1000mtc = 1eth
+     uint256 public constant RATE = 1000; //1000mtc = 1eth
      uint256 public constant decimals = 2;
      address public owner;
   
@@ -44,7 +44,7 @@ contract MTC {
     //ethとmtcの交換処理
     function createTokens(address addr) payable{
         require(msg.value > 0); 
-        uint256 tokens = msg.value.mul(RATE)
+        uint256 tokens = msg.value.mul(RATE);
         require(_currentSupply.add(tokens) <= _totalSupply); 
         balances[owner] = balances[owner].sub(tokens);
         balances[addr] = balances[addr].add(tokens);
@@ -105,5 +105,3 @@ contract MTC {
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
 }
- 
- 
